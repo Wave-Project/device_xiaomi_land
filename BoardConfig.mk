@@ -242,6 +242,9 @@ WIFI_HIDL_UNIFIED_SUPPLICANT_SERVICE_RC_ENTRY := true
 # Security patch level
 VENDOR_SECURITY_PATCH := 2017-04-01
 
+# Pixel offline charging animation
+USE_PIXEL_CHARGER_IMAGES := true
+
 # Inherit the common proprietary files
 -include vendor/xiaomi/land/BoardConfigVendor.mk
 
