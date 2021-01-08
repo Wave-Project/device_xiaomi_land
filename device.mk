@@ -18,8 +18,7 @@ LOCAL_PATH := device/xiaomi/land
 
 # Overlay
 DEVICE_PACKAGE_OVERLAYS += \
-    $(LOCAL_PATH)/overlay \
-    $(LOCAL_PATH)/overlay-lineage
+    $(LOCAL_PATH)/overlay
 
 # Properties
 -include $(LOCAL_PATH)/vendor_prop.mk
@@ -105,8 +104,7 @@ PRODUCT_PACKAGES += \
 
 # Camera
 PRODUCT_PACKAGES += \
-    camera.msm8937 \
-    Snap
+    camera.msm8937
 
 PRODUCT_PACKAGES += \
     android.hardware.camera.common@1.0 \
@@ -273,10 +271,6 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     libshims_camera
 
-# LiveDisplay native
-PRODUCT_PACKAGES += \
-    vendor.lineage.livedisplay@2.0-service-sdm
-
 # Media
 PRODUCT_COPY_FILES += \
     frameworks/av/media/libstagefright/data/media_codecs_google_audio.xml:$(TARGET_COPY_OUT_VENDOR)/etc/media_codecs_google_audio.xml \
@@ -343,11 +337,6 @@ PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.software.midi.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.software.midi.xml \
     frameworks/native/data/etc/android.software.sip.voip.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.software.sip.voip.xml \
     frameworks/native/data/etc/handheld_core_hardware.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/handheld_core_hardware.xml
-
-# Offline charger
-PRODUCT_PACKAGES += \
-    charger_res_images \
-    product_charger_res_images
 
 # Power
 PRODUCT_PACKAGES += \
@@ -456,10 +445,6 @@ PRODUCT_COPY_FILES += \
 PRODUCT_PACKAGES += \
     timekeep \
     TimeKeep
-
-# Touch HAL
-PRODUCT_PACKAGES += \
-    vendor.lineage.touch@1.0-service.land
 
 # USB
 PRODUCT_PACKAGES += \

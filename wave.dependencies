@@ -1,0 +1,12 @@
+[
+    {
+        "repository":  "sairam1411/kernel_xiaomi_msm8937",
+        "target_path": "kernel/xiaomi/land",
+        "remote":      "github",
+        "branch":      "a11"
+    },
+    {
+        "repository":  "vendor_xiaomi_land",
+        "target_path": "vendor/xiaomi/land"
+    }
+]
