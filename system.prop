@@ -19,3 +19,6 @@ DEVICE_PROVISIONED=1
 
 # BPF
 ro.kernel.ebpf.supported=true
+
+# Zygote Preforking
+persist.device.config.runtime_native.uasp_pool_enabled=true
