@@ -196,7 +196,8 @@ PRODUCT_PROPERTY_OVERRIDES += \
 # Perf
 PRODUCT_PROPERTY_OVVERIDES += \
    ro.vendor.extension_library=libqti-perfd-client.so \
-   ro.vendor.qti.sys.fw.bg_apps_limit=60
+   ro.vendor.qti.sys.fw.bg_apps_limit=60 \
+   persist.sys.fflag.override.settings_fuse=false
 
 # Properties
 PRODUCT_PROPERTY_OVERRIDES += \
