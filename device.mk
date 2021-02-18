@@ -524,3 +524,8 @@ PRODUCT_SYSTEM_SERVER_COMPILER_FILTER := speed-profile
 # Always preopt extracted APKs to prevent extracting out of the APK
 # for gms modules.
 PRODUCT_ALWAYS_PREOPT_EXTRACTED_APK := true
+
+# LMKD
+PRODUCT_PROPERTY_OVERRIDES += \
+   ro.config.low_ram=false \
+   ro.lmk.log_stats=true
