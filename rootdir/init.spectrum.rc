@@ -5,6 +5,8 @@
 # Initialization
 on property:sys.boot_completed=1
 
+   chown system system /sys/devices/platform/soc/1c00000.qcom,kgsl-3d0/kgsl/kgsl-3d0/default_pwrlevel
+   chmod 0664 /sys/devices/platform/soc/1c00000.qcom,kgsl-3d0/kgsl/kgsl-3d0/default_pwrlevel
    chown system system /sys/devices/system/cpu/cpu0/cpufreq/scaling_max_freq
    chown system system /sys/devices/system/cpu/cpu4/cpufreq/scaling_max_freq
    chown system system /sys/devices/system/cpu/cpu0/cpufreq/scaling_min_freq
@@ -28,7 +30,7 @@ on property:sys.boot_completed=1
    chown system system /sys/block/mmcblk1/queue/scheduler
    chmod 0664 /sys/block/mmcblk1/queue/scheduler
 
-   # Set default profile on first boot
+# Set default profile on first boot
     exec u:r:init:s0 root root -- /vendor/bin/init.spectrum.sh
     exec u:r:magisk:s0 root root -- /vendor/bin/init.spectrum.sh
     exec u:r:su:s0 root root -- /vendor/bin/init.spectrum.sh
@@ -52,13 +54,11 @@ on property:persist.spectrum.profile=0
 		write /sys/devices/system/cpu/cpu4/cpufreq/scaling_max_freq 1094400
 		write /sys/devices/system/cpu/cpu4/cpufreq/scaling_min_freq 768000
 
-		#adreno idler
-		write /sys/module/adreno_idler/parameters/adreno_idler_active 0
-
 		#adreno boost
 		write /sys/class/kgsl/kgsl-3d0/devfreq/adrenoboost 1
 
 		#GPU
+		write /sys/devices/platform/soc/1c00000.qcom,kgsl-3d0/kgsl/kgsl-3d0/default_pwrlevel 5
 		write /sys/devices/platform/soc/1c00000.qcom,kgsl-3d0/kgsl/kgsl-3d0/max_clock_mhz 450
 		write /sys/module/adreno_idler/parameters/adreno_idler_active Y
 
@@ -80,6 +80,8 @@ on property:persist.spectrum.profile=0
 		write /proc/sys/vm/dirty_writeback_centisecs 500
 
 		write /sys/module/workqueue/parameters/power_efficient Y
+                write /proc/sys/kernel/sched_upmigrate "95 95"
+                write /proc/sys/kernel/sched_downmigrate "85 85"
 
 # Performance
 on property:persist.spectrum.profile=1
@@ -94,13 +96,11 @@ on property:persist.spectrum.profile=1
 		write /sys/devices/system/cpu/cpu4/cpufreq/scaling_max_freq 1094400
 		write /sys/devices/system/cpu/cpu4/cpufreq/scaling_min_freq 960000
 
-		#adreno idler
-		write /sys/module/adreno_idler/parameters/adreno_idler_active 0
-
 		#adreno boost
 		write /sys/class/kgsl/kgsl-3d0/devfreq/adrenoboost 2
 
 		#GPU
+		write /sys/devices/platform/soc/1c00000.qcom,kgsl-3d0/kgsl/kgsl-3d0/default_pwrlevel 3
 		write /sys/devices/platform/soc/1c00000.qcom,kgsl-3d0/kgsl/kgsl-3d0/max_clock_mhz 475
 		write /sys/module/adreno_idler/parameters/adreno_idler_active N
 
@@ -122,6 +122,8 @@ on property:persist.spectrum.profile=1
 		write /proc/sys/vm/dirty_writeback_centisecs 1500
 
 		write /sys/module/workqueue/parameters/power_efficient N
+                write /proc/sys/kernel/sched_upmigrate "95 95"
+                write /proc/sys/kernel/sched_downmigrate "85 85"
 
 # Battery
 on property:persist.spectrum.profile=2
@@ -136,13 +138,11 @@ on property:persist.spectrum.profile=2
 		write /sys/devices/system/cpu/cpu4/cpufreq/scaling_max_freq 1094400
 		write /sys/devices/system/cpu/cpu4/cpufreq/scaling_min_freq 768000
 
-		#adreno idler
-		write /sys/module/adreno_idler/parameters/adreno_idler_active 1
-
 		#adreno boost
 		write /sys/class/kgsl/kgsl-3d0/devfreq/adrenoboost 0
 
 		#GPU
+		write /sys/devices/platform/soc/1c00000.qcom,kgsl-3d0/kgsl/kgsl-3d0/default_pwrlevel 5
 		write /sys/devices/platform/soc/1c00000.qcom,kgsl-3d0/kgsl/kgsl-3d0/max_clock_mhz 450
 		write /sys/module/adreno_idler/parameters/adreno_idler_active Y
 
@@ -164,6 +164,8 @@ on property:persist.spectrum.profile=2
 		write /proc/sys/vm/dirty_writeback_centisecs 500
 
 		write /sys/module/workqueue/parameters/power_efficient Y
+                write /proc/sys/kernel/sched_upmigrate "95 95"
+                write /proc/sys/kernel/sched_downmigrate "85 85"
 
 # Gaming
 on property:persist.spectrum.profile=3
@@ -178,13 +180,11 @@ on property:persist.spectrum.profile=3
 		write /sys/devices/system/cpu/cpu4/cpufreq/scaling_max_freq 1094400
 		write /sys/devices/system/cpu/cpu4/cpufreq/scaling_min_freq 960000
 
-		#adreno idler
-		write /sys/module/adreno_idler/parameters/adreno_idler_active 0
-
 		#adreno boost
 		write /sys/class/kgsl/kgsl-3d0/devfreq/adrenoboost 3
 
 		#GPU
+		write /sys/devices/platform/soc/1c00000.qcom,kgsl-3d0/kgsl/kgsl-3d0/default_pwrlevel 2
 		write /sys/devices/platform/soc/1c00000.qcom,kgsl-3d0/kgsl/kgsl-3d0/max_clock_mhz 475
 		write /sys/module/adreno_idler/parameters/adreno_idler_active N
 
@@ -197,7 +197,7 @@ on property:persist.spectrum.profile=3
 		write /sys/module/lowmemorykiller/parameters/minfree 18432,23040,27648,51256,150296,200640
 		write /sys/module/lowmemorykiller/parameters/cost 16
 		write /sys/module/lowmemorykiller/parameters/vmpressure_file_min 202640
-		write /proc/sys/vm/swappiness 70
+		write /proc/sys/vm/swappiness 1
 		write /proc/sys/vm/vfs_cache_pressure 500
 		write /proc/sys/vm/min_free_kbytes 8192
 		write /proc/sys/vm/dirty_ratio 10
@@ -206,3 +206,5 @@ on property:persist.spectrum.profile=3
 		write /proc/sys/vm/dirty_writeback_centisecs 100
 
 		write /sys/module/workqueue/parameters/power_efficient N
+                write /proc/sys/kernel/sched_upmigrate "96 88"
+                write /proc/sys/kernel/sched_downmigrate "55 66"
