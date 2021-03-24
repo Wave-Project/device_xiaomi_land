@@ -21,3 +21,5 @@ allow system_server sysfs_battery_supply:file { getattr open read write };
 allow system_server sysfs_battery_supply:file rw_file_perms;
 
 get_prop(system_server, vendor_alarm_boot_prop)
+
+allow vendor_init fpc_data_file:dir { getattr };
