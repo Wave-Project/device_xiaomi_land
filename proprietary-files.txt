@@ -473,3 +473,7 @@ etc/firmware/modem_config/S88537AB1/cu_mcfg_sw.mbn:vendor/firmware/modem_config/
 etc/firmware/modem_config/S88537AB1/ct_mcfg_sw.mbn:vendor/firmware/modem_config/S88537AB1/ct_mcfg_sw.mbn
 etc/firmware/modem_config/S88537AB1/cmcc_mcfg_sw.mbn:vendor/firmware/modem_config/S88537AB1/cmcc_mcfg_sw.mbn
 etc/firmware/modem_config/S88537AB1/row_mcfg_sw.mbn:vendor/firmware/modem_config/S88537AB1/row_mcfg_sw.mbn
+
+# libunwind
+vendor/lib/libunwind.so|cbc0330402aea93e8dd800a8ac3550ac3b1757e0
+vendor/lib64/libunwind.so|73ba4aac6b71fba80270e1661efe7470e770fe37
